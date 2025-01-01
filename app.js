@@ -6,6 +6,8 @@ const passport = require('passport');
 const path = require('path');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+
 require('./cron/holidayScheduler');
 
 
@@ -90,3 +92,5 @@ ensureDatabase()
     .catch(err => {
         console.error('Failed to ensure database:', err);
     });
+
+    module.exports = app ;
