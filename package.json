@@ -18,8 +18,7 @@
     "sequelize": "^6.37.3"
   },
   "scripts": {
-    "start": "nodemon app.js",
-    "type": "commonjs",
+    "start": "node app.js",
     "test": "mocha --require @babel/register"
   },
   "devDependencies": {
