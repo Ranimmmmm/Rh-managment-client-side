@@ -1,15 +1,22 @@
 const mysql = require('mysql2/promise');
+const dotenv = require('dotenv');
+const fs = require('fs');
+dotenv.config();
+
 
 async function ensureDatabase() {
-    const databaseName = 'employee'; // Your database name
-    const user = 'root';
-    const password = 'root123.';
+    const user = process.env.DB_USER;
+    const password = process.env.DB_PASSWORD;
+    const connectionString = process.env.DB_CONNECTION_STRING; 
+    const host = process.env.DB_HOST; 
+    const port = process.env.DB_PORT; 
     const connection = await mysql.createConnection({
-        host: 'localhost',
+        host: host,
         user: user,
-        password: password
+        password: password,
+        port: port,
+       
     });
-    await connection.query(`CREATE DATABASE IF NOT EXISTS \`${databaseName}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;`);
     await connection.end();
 }
 

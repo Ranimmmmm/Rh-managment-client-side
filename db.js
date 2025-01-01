@@ -1,13 +1,15 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Database connection details
-const sequelize = new Sequelize('employee', 'root', 'root123.', {
-    host: 'localhost',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+    host: process.env.DB_HOST,
     dialect: 'mysql',
-    port: 3306,
-    logging: console.log, // Optional: Log SQL queries to console
+    port: process.env.DB_PORT,
+    logging: console.log, 
     define: {
         charset: 'utf8mb4',
         collate: 'utf8mb4_general_ci',
