@@ -1,41 +1,26 @@
 {
   "development": {
-    "username": "process.env.DB_USER",
-    "password": "process.env.DB_PASSWORD",
-    "database": "process.env.DB_NAME",
-    "host": "process.env.DB_HOST",
+    "username": "avnadmin",
+    "password": "AVNS_Y7M2Cui8IDNZL5tn4ge",
+    "database": "defaultdb",
+    "host": "extra-it-rh-mangment.k.aivencloud.com",
     "dialect": "mysql",
-    "port": "process.env.DB_PORT",
-    "dialectOptions": {
-      "ssl": {
-        "ca": "process.env.DB_SSL_CA"
-      }
-    }
+    "port": 13274
   },
   "test": {
-    "username": "process.env.DB_USER",
-    "password": "process.env.DB_PASSWORD",
-    "database": "process.env.DB_NAME",
-    "host": "process.env.DB_HOST",
+    "username": "avnadmin",
+    "password": "AVNS_Y7M2Cui8IDNZL5tn4ge",
+    "database": "defaultdb",
+    "host": "extra-it-rh-mangment.k.aivencloud.com",
     "dialect": "mysql",
-    "port": "process.env.DB_PORT",
-    "dialectOptions": {
-      "ssl": {
-        "ca": "process.env.DB_SSL_CA"
-      }
-    }
+    "port": 13274
   },
   "production": {
-    "username": "process.env.DB_USER",
-    "password": "process.env.DB_PASSWORD",
-    "database": "process.env.DB_NAME",
-    "host": "process.env.DB_HOST",
+    "username": "avnadmin",
+    "password": "AVNS_Y7M2Cui8IDNZL5tn4ge",
+    "database": "defaultdb",
+    "host": "extra-it-rh-mangment.k.aivencloud.com",
     "dialect": "mysql",
-    "port": "process.env.DB_PORT",
-    "dialectOptions": {
-      "ssl": {
-        "ca": "process.env.DB_SSL_CA"
-      }
-    }
+    "port": 13274
   }
 }
