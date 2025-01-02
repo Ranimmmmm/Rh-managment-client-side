@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json({ limit: '10mb', extended: true }));
 app.use(express.urlencoded({ limit: '10mb', extended: true, parameterLimit: 50000 }));
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: process.env.FRONT_URL,
     credentials: true,
     methods: 'GET,POST,PUT,DELETE,PATCH,UPDATE',
     allowedHeaders: 'Content-Type ,Authorization',
