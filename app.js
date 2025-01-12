@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json({ limit: '10mb', extended: true }));
 app.use(express.urlencoded({ limit: '10mb', extended: true, parameterLimit: 50000 }));
 app.use(cors({
-    origin: process.env.FRONT_URL,
+    origin: process.env.FRONT_URL || 'https://rh-managment-front.vercel.app',
     credentials: true,
     methods: 'GET,POST,PUT,DELETE,PATCH,UPDATE',
     allowedHeaders: 'Content-Type ,Authorization',
@@ -48,6 +48,28 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.post("/verify-recaptcha", async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    return res.status(400).json({ success: false, message: "Token is missing." });
+  }
+
+  try {
+    // Verify the reCAPTCHA token with Google
+    const response = await axios.post(
+     `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`)
+    const { success } = response.data;
+    if (success) {
+      res.json({ success: true, message: "reCAPTCHA verified." });
+    } else {
+      res.status(400).json({ success: false, message: "reCAPTCHA verification failed." });
+    }
+  } catch (error) {
+    console.error("Error verifying reCAPTCHA:", error);
+    res.status(500).json({ success: false, message: "Internal server error." });
+  }
+});
 //static Folder
 app.use("/media", express.static("public"));
 app.use("/profiles", express.static("public/images/profiles"));
